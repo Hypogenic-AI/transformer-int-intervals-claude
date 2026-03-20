@@ -1,0 +1,37 @@
+idea:
+  title: How accurately does a Transformer store integer intervals?
+  domain: nlp
+  hypothesis: 'Large language models may represent counting or integer interval operations
+    in their residual streams, independent of explicit token-based arithmetic. By
+    analyzing hidden states across layers, we can observe whether LLMs internally
+    "count" when prompted with tasks such as determining the N-th letter after a given
+    letter in an alphabetic ring, without relying on digit manipulation or token-level
+    heuristics.
+
+    '
+  background:
+    description: 'The idea explores how LLMs "count" in the residual stream, noting
+      that standard arithmetic tasks often allow models to offload computation onto
+      token representations (e.g., digit manipulation for addition). Instead, the
+      proposal suggests examining tasks like "what is N letters after C in a ring
+      alphabet," which cannot be solved purely by token heuristics. The goal is to
+      investigate whether counting-like processes can be observed in the model''s
+      hidden states as information propagates through layers, revealing internal mechanisms
+      for storing and manipulating integer intervals.
+
+      '
+  metadata:
+    author: Ari Holtzman
+    tags:
+    - transformer
+    - counting
+    - residual stream
+    - interpretability
+    - nlp
+    source: IdeaHub
+    source_url: https://hypogenic.ai/ideahub/idea/0TTNtk6yYKcwu3VC8Y7Q
+    idea_id: how_accurately_does_a_transfor_20260320_020330_b950bd7b
+    created_at: '2026-03-20T02:03:30.187016'
+    status: submitted
+    github_repo_name: transformer-int-intervals-claude
+    github_repo_url: https://github.com/Hypogenic-AI/transformer-int-intervals-claude
