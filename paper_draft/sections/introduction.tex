@@ -1,0 +1,20 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Can a transformer compute whether a number falls inside an interval, even if it never says so? Recent work in mechanistic interpretability has revealed that language models encode numerical magnitudes with remarkable precision~\citep{levy2024language, kadlcik2025pretrained} and implement specific circuits for numerical comparison~\citep{hanna2023how}. Yet we know little about how models handle \emph{composite} numerical operations---tasks that require combining multiple primitive computations. Interval membership ($X \in [A, B]$) is a natural test case: it requires two boundary checks, and understanding how models represent it sheds light on how transformers compose sub-computations internally.
+
+\para{Why intervals and modular arithmetic?} Interval membership is ubiquitous in natural language (``between 2020 and 2024,'' ``ages 18 to 65'') and requires composing a greater-than and a less-than check. \citet{hanna2023how} discovered that GPT-2 implements a greater-than circuit in layers~5--9 but found \emph{no} less-than circuit, raising the question of how the model handles two-sided bounds. Modular arithmetic over the alphabet (``What letter is 11 after R, wrapping around?'') tests whether transformers can perform counting with carry operations---a capability that cannot be solved by digit-level token heuristics alone.
+
+\para{The gap.} Prior work has characterized how numbers are encoded in hidden states~\citep{levy2024language, kadlcik2025pretrained, wallace2019nlp} and how specific arithmetic circuits operate~\citep{hanna2023how, stolfo2023mechanistic, quirke2024understanding}. However, no work has examined how transformers represent \emph{interval membership} or \emph{modular arithmetic} in their residual streams. This leaves open whether these composite operations are internally computed or simply beyond the model's reach.
+
+\para{Our approach.} We use \gptsmall (12 layers, 768-dimensional residual stream) as our target model, chosen because its greater-than circuit has been fully mapped~\citep{hanna2023how} and its number representations are well-characterized~\citep{levy2024language}. We extract hidden states across all layers for three tasks---number comparison, interval membership, and alphabetic ring counting---and apply linear probes, regression probes, and activation patching to determine what information is stored and where.
+
+\para{Preview of results.} We find a striking dissociation between internal representation and behavioral performance. Comparison information reaches 99.1\% probe accuracy by layer~9, yet the model achieves only 48.6\% behavioral accuracy. Interval membership peaks at 83.8\% probe accuracy at layer~8, 15 percentage points below comparison. Most remarkably, ring counting answers are decodable at 58\% (versus 3.8\% chance) despite 0\% behavioral accuracy---the model internally computes modular arithmetic but completely fails to output the result.
+
+We make the following contributions:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item We provide the first mechanistic analysis of \textbf{interval membership} representation in transformers, showing it is linearly decodable at 83.8\% and is genuinely harder than single comparison (99.1\%).
+    \item We demonstrate that \gptsmall internally represents \textbf{modular arithmetic} (alphabetic ring counting) at 58\% accuracy despite 0\% behavioral performance, revealing a ``last-mile'' failure between computation and output.
+    \item We use activation patching to identify \textbf{layers~8--9 as causally important} for both comparison and interval tasks, consistent with prior circuit-level findings.
+    \item We analyze how \textbf{interval width} and \textbf{wrap-around} conditions affect internal representations, finding that wider intervals and modular wrapping each pose distinct challenges.
+\end{itemize}

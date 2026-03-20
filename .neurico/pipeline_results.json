@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "stages": {
+    "resource_finder": {
+      "success": true,
+      "completion_marker": "/workspaces/transformer-int-intervals-claude/.resource_finder_complete",
+      "outputs": {
+        "literature_review": "/workspaces/transformer-int-intervals-claude/literature_review.md",
+        "resources_catalog": "/workspaces/transformer-int-intervals-claude/resources.md",
+        "papers_dir": "/workspaces/transformer-int-intervals-claude/papers",
+        "datasets_dir": "/workspaces/transformer-int-intervals-claude/datasets",
+        "code_dir": "/workspaces/transformer-int-intervals-claude/code"
+      },
+      "log_file": "/workspaces/transformer-int-intervals-claude/logs/resource_finder_claude.log",
+      "transcript_file": "/workspaces/transformer-int-intervals-claude/logs/resource_finder_claude_transcript.jsonl",
+      "elapsed_time": 2172.2335908412933
+    },
+    "experiment_runner": {
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 2410.134085893631,
+      "log_file": "/workspaces/transformer-int-intervals-claude/logs/execution_claude.log",
+      "transcript_file": "/workspaces/transformer-int-intervals-claude/logs/execution_claude_transcript.jsonl"
+    }
+  },
+  "work_dir": "/workspaces/transformer-int-intervals-claude"
+}

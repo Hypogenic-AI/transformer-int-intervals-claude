@@ -1,0 +1,122 @@
+[
+  {
+    "a": 317,
+    "b": 715,
+    "label": 0,
+    "prompt": "Is 317 greater than 715?"
+  },
+  {
+    "a": 447,
+    "b": 747,
+    "label": 0,
+    "prompt": "Is 447 greater than 747?"
+  },
+  {
+    "a": 976,
+    "b": 866,
+    "label": 1,
+    "prompt": "Is 976 greater than 866?"
+  },
+  {
+    "a": 244,
+    "b": 59,
+    "label": 1,
+    "prompt": "Is 244 greater than 59?"
+  },
+  {
+    "a": 250,
+    "b": 88,
+    "label": 1,
+    "prompt": "Is 250 greater than 88?"
+  },
+  {
+    "a": 946,
+    "b": 444,
+    "label": 1,
+    "prompt": "Is 946 greater than 444?"
+  },
+  {
+    "a": 118,
+    "b": 464,
+    "label": 0,
+    "prompt": "Is 118 greater than 464?"
+  },
+  {
+    "a": 626,
+    "b": 623,
+    "label": 1,
+    "prompt": "Is 626 greater than 623?"
+  },
+  {
+    "a": 56,
+    "b": 316,
+    "label": 0,
+    "prompt": "Is 56 greater than 316?"
+  },
+  {
+    "a": 682,
+    "b": 759,
+    "label": 0,
+    "prompt": "Is 682 greater than 759?"
+  },
+  {
+    "a": 673,
+    "b": 758,
+    "label": 0,
+    "prompt": "Is 673 greater than 758?"
+  },
+  {
+    "a": 179,
+    "b": 122,
+    "label": 1,
+    "prompt": "Is 179 greater than 122?"
+  },
+  {
+    "a": 12,
+    "b": 724,
+    "label": 0,
+    "prompt": "Is 12 greater than 724?"
+  },
+  {
+    "a": 140,
+    "b": 718,
+    "label": 0,
+    "prompt": "Is 140 greater than 718?"
+  },
+  {
+    "a": 11,
+    "b": 167,
+    "label": 0,
+    "prompt": "Is 11 greater than 167?"
+  },
+  {
+    "a": 508,
+    "b": 975,
+    "label": 0,
+    "prompt": "Is 508 greater than 975?"
+  },
+  {
+    "a": 355,
+    "b": 535,
+    "label": 0,
+    "prompt": "Is 355 greater than 535?"
+  },
+  {
+    "a": 529,
+    "b": 801,
+    "label": 0,
+    "prompt": "Is 529 greater than 801?"
+  },
+  {
+    "a": 842,
+    "b": 738,
+    "label": 1,
+    "prompt": "Is 842 greater than 738?"
+  },
+  {
+    "a": 265,
+    "b": 170,
+    "label": 1,
+    "prompt": "Is 265 greater than 170?"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "start_letter": "R",
+    "n": 11,
+    "answer_letter": "C",
+    "prompt": "What is the 11-th letter after R in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "Y",
+    "n": 10,
+    "answer_letter": "I",
+    "prompt": "What is the 10-th letter after Y in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "M",
+    "n": 15,
+    "answer_letter": "B",
+    "prompt": "What is the 15-th letter after M in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "R",
+    "n": 21,
+    "answer_letter": "M",
+    "prompt": "What is the 21-th letter after R in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "L",
+    "n": 10,
+    "answer_letter": "V",
+    "prompt": "What is the 10-th letter after L in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "I",
+    "n": 12,
+    "answer_letter": "U",
+    "prompt": "What is the 12-th letter after I in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "Q",
+    "n": 16,
+    "answer_letter": "G",
+    "prompt": "What is the 16-th letter after Q in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "O",
+    "n": 4,
+    "answer_letter": "S",
+    "prompt": "What is the 4-th letter after O in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "Z",
+    "n": 24,
+    "answer_letter": "X",
+    "prompt": "What is the 24-th letter after Z in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "P",
+    "n": 25,
+    "answer_letter": "O",
+    "prompt": "What is the 25-th letter after P in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "K",
+    "n": 7,
+    "answer_letter": "R",
+    "prompt": "What is the 7-th letter after K in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "L",
+    "n": 11,
+    "answer_letter": "W",
+    "prompt": "What is the 11-th letter after L in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "N",
+    "n": 2,
+    "answer_letter": "P",
+    "prompt": "What is the 2-th letter after N in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "S",
+    "n": 8,
+    "answer_letter": "A",
+    "prompt": "What is the 8-th letter after S in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "X",
+    "n": 5,
+    "answer_letter": "C",
+    "prompt": "What is the 5-th letter after X in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "A",
+    "n": 9,
+    "answer_letter": "J",
+    "prompt": "What is the 9-th letter after A in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "R",
+    "n": 19,
+    "answer_letter": "K",
+    "prompt": "What is the 19-th letter after R in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "S",
+    "n": 24,
+    "answer_letter": "Q",
+    "prompt": "What is the 24-th letter after S in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "N",
+    "n": 10,
+    "answer_letter": "X",
+    "prompt": "What is the 10-th letter after N in the alphabet (wrapping around)?"
+  },
+  {
+    "start_letter": "E",
+    "n": 7,
+    "answer_letter": "L",
+    "prompt": "What is the 7-th letter after E in the alphabet (wrapping around)?"
+  }
+]

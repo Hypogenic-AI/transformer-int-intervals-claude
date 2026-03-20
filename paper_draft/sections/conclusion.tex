@@ -1,0 +1,10 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented the first mechanistic analysis of integer interval membership and modular arithmetic representations in a pretrained transformer. Using linear probing, regression probes, and activation patching on \gptsmall, we found that the model stores rich numerical information---comparison (99.1\%), interval membership (83.8\%), and modular arithmetic (58\%)---in its residual stream, far above chance and shuffled-label controls. This information exists despite the model performing at or below chance on all three tasks behaviorally.
+
+Three findings stand out. First, interval membership is genuinely harder to decode than single comparison, with a 15 percentage point gap consistent with the hypothesis that intervals require composing two boundary checks. Second, ring counting answers are decodable at 15$\times$ above chance despite 0\% behavioral accuracy---the most extreme behavior--representation dissociation reported to date. Third, activation patching identifies layers~8--9 as causally important for both comparison and interval tasks, aligning with prior circuit-level findings.
+
+These results have practical implications. Behavioral evaluation alone dramatically underestimates what models internally compute. Probing should be a standard companion to behavioral metrics in evaluating model capabilities. The ``last-mile'' failure---good internal representations that do not reach the output---suggests that fine-tuning or improved prompting could unlock latent capabilities without changing core representations.
+
+\para{Future work.} We plan to extend this analysis to larger models (GPT-2 Medium/Large, Llama~3) to test whether behavioral accuracy improves while internal representations remain similar. Circular and sinusoidal probes~\citep{levy2024language, kadlcik2025pretrained} may better capture the periodic structure of modular arithmetic. Path patching at the attention head and MLP level would provide finer-grained circuit identification. Finally, studying whether fine-tuning on these tasks closes the behavior--representation gap would directly test the ``last-mile'' hypothesis.

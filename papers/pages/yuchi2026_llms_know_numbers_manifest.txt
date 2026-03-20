@@ -1,0 +1,10 @@
+PDF: papers/yuchi2026_llms_know_numbers.pdf
+Total pages: 15
+Pages per chunk: 3
+
+Chunks:
+  yuchi2026_llms_know_numbers_chunk_001.pdf: pages 1-3
+  yuchi2026_llms_know_numbers_chunk_002.pdf: pages 4-6
+  yuchi2026_llms_know_numbers_chunk_003.pdf: pages 7-9
+  yuchi2026_llms_know_numbers_chunk_004.pdf: pages 10-12
+  yuchi2026_llms_know_numbers_chunk_005.pdf: pages 13-15

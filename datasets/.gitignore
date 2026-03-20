@@ -1,0 +1,14 @@
+# Exclude large data files
+*.parquet
+*.arrow
+*.bin
+*.h5
+*.hdf5
+*.pt
+*.safetensors
+
+# But include documentation and small samples
+!.gitignore
+!README.md
+!**/README.md
+!**/*_sample.json

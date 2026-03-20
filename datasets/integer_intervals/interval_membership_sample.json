@@ -1,0 +1,142 @@
+[
+  {
+    "x": 3,
+    "a": 81,
+    "b": 85,
+    "label": 0,
+    "prompt": "Is 3 in the interval [81, 85]?"
+  },
+  {
+    "x": 28,
+    "a": 35,
+    "b": 67,
+    "label": 0,
+    "prompt": "Is 28 in the interval [35, 67]?"
+  },
+  {
+    "x": 86,
+    "a": 17,
+    "b": 31,
+    "label": 0,
+    "prompt": "Is 86 in the interval [17, 31]?"
+  },
+  {
+    "x": 75,
+    "a": 69,
+    "b": 72,
+    "label": 0,
+    "prompt": "Is 75 in the interval [69, 72]?"
+  },
+  {
+    "x": 3,
+    "a": 54,
+    "b": 57,
+    "label": 0,
+    "prompt": "Is 3 in the interval [54, 57]?"
+  },
+  {
+    "x": 29,
+    "a": 11,
+    "b": 39,
+    "label": 1,
+    "prompt": "Is 29 in the interval [11, 39]?"
+  },
+  {
+    "x": 71,
+    "a": 64,
+    "b": 66,
+    "label": 0,
+    "prompt": "Is 71 in the interval [64, 66]?"
+  },
+  {
+    "x": 53,
+    "a": 25,
+    "b": 95,
+    "label": 1,
+    "prompt": "Is 53 in the interval [25, 95]?"
+  },
+  {
+    "x": 75,
+    "a": 28,
+    "b": 86,
+    "label": 1,
+    "prompt": "Is 75 in the interval [28, 86]?"
+  },
+  {
+    "x": 97,
+    "a": 35,
+    "b": 36,
+    "label": 0,
+    "prompt": "Is 97 in the interval [35, 36]?"
+  },
+  {
+    "x": 43,
+    "a": 20,
+    "b": 75,
+    "label": 1,
+    "prompt": "Is 43 in the interval [20, 75]?"
+  },
+  {
+    "x": 27,
+    "a": 35,
+    "b": 55,
+    "label": 0,
+    "prompt": "Is 27 in the interval [35, 55]?"
+  },
+  {
+    "x": 11,
+    "a": 43,
+    "b": 50,
+    "label": 0,
+    "prompt": "Is 11 in the interval [43, 50]?"
+  },
+  {
+    "x": 45,
+    "a": 48,
+    "b": 55,
+    "label": 0,
+    "prompt": "Is 45 in the interval [48, 55]?"
+  },
+  {
+    "x": 33,
+    "a": 44,
+    "b": 83,
+    "label": 0,
+    "prompt": "Is 33 in the interval [44, 83]?"
+  },
+  {
+    "x": 58,
+    "a": 5,
+    "b": 99,
+    "label": 1,
+    "prompt": "Is 58 in the interval [5, 99]?"
+  },
+  {
+    "x": 48,
+    "a": 68,
+    "b": 76,
+    "label": 0,
+    "prompt": "Is 48 in the interval [68, 76]?"
+  },
+  {
+    "x": 37,
+    "a": 10,
+    "b": 81,
+    "label": 1,
+    "prompt": "Is 37 in the interval [10, 81]?"
+  },
+  {
+    "x": 46,
+    "a": 80,
+    "b": 100,
+    "label": 0,
+    "prompt": "Is 46 in the interval [80, 100]?"
+  },
+  {
+    "x": 90,
+    "a": 73,
+    "b": 80,
+    "label": 0,
+    "prompt": "Is 90 in the interval [73, 80]?"
+  }
+]

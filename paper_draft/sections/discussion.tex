@@ -1,0 +1,34 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{The Behavior--Representation Dissociation}
+
+Our most striking finding is the systematic gap between internal representation quality and behavioral performance. This gap varies across tasks: 50.5 percentage points for comparison (99.1\% internal vs.\ 48.6\% behavioral), 10.9 percentage points for interval membership (83.8\% vs.\ 72.9\%, though the behavioral ``accuracy'' reflects majority-class guessing), and the full 58 percentage points for ring counting (58\% internal vs.\ 0\% behavioral). The ring counting result is, to our knowledge, the most extreme case of this dissociation reported in the literature: the model internally computes modular arithmetic with 15$\times$ above-chance accuracy but produces a correct output in exactly zero cases.
+
+\para{Why does this happen?} We hypothesize a ``last-mile'' failure: the model computes task-relevant representations in its residual stream but lacks the output circuitry to translate them into correct next-token predictions. For comparison, \gptsmall was not trained on ``Is $A$ greater than $B$?'' formatted questions---its greater-than circuit was discovered in a year-completion format~\citep{hanna2023how}. For ring counting, the model has likely never seen alphabetic modular arithmetic during pretraining, so no output pathway was learned. The internal representations exist because the model processes the letter and number tokens and builds useful features from them, but these features are not connected to the final prediction.
+
+This finding extends and strengthens the ``LLMs know more than they can say'' phenomenon documented by \citet{yuchi2026llms} for number comparison. Our ring counting result demonstrates that this phenomenon is not limited to tasks the model partially solves---it extends to tasks where the model completely fails.
+
+\subsection{Interval Membership as Composed Computation}
+
+The 15 percentage point gap between comparison (99.1\%) and interval (83.8\%) peak probe accuracy supports the hypothesis that interval membership is computationally harder because it requires composing two boundary checks. Several pieces of evidence are consistent with this view. First, comparison information emerges rapidly (89.4\% at layer~1) while interval information builds more gradually (peaking at layer~8). Second, the width analysis shows that the hardest interval condition (width~50, balanced labels) reaches only 75.5\% probe accuracy, suggesting that as class balance increases, the composition becomes more demanding. Third, the similar activation patching profiles for comparison and interval tasks (both peaking at layers~8--9) suggest overlapping but not identical circuits, consistent with interval membership reusing comparison sub-circuits.
+
+\subsection{Progressive Information Accumulation}
+
+All three tasks show progressive information accumulation across layers, but with different profiles. Comparison information appears abruptly at layer~1 and reaches near-ceiling by layer~6. Interval information builds gradually through layers~3--8. Ring counting information accumulates most slowly, continuing to improve through layer~12. This ordering---comparison fastest, ring counting slowest---tracks the computational complexity of each task: single comparison requires one relational judgment, interval requires two, and ring counting requires modular arithmetic with carry. The progressive pattern for ring counting is consistent with \citet{hasani2026mechanistic}'s finding that counting information accumulates across layers.
+
+\subsection{Interpreting the Shuffled-Label Controls}
+
+An important methodological detail is that shuffled-label probe accuracy for the interval task \emph{increases} across layers, from 59.2\% at layer~1 to 65.4\% at layer~11. This means the probe can achieve progressively higher accuracy on random labels as layer depth increases. This likely reflects the increasing complexity of activation geometry in later layers: higher-dimensional features provide more degrees of freedom for fitting arbitrary labels. This trend underscores the importance of shuffled controls---without them, one might overestimate the genuine information content in later layers.
+
+\subsection{Limitations}
+
+\para{Single model.} All experiments use \gptsmall (124M parameters). Larger models may show different patterns, particularly for behavioral accuracy---we expect models with more parameters and broader training data to partially close the behavior--representation gap.
+
+\para{Linear probes only.} We test only linearly accessible information. Non-linear probes might extract more from hidden states~\citep{alain2017understanding}, but risk overfitting and conflating probe complexity with representational content~\citep{hewitt2019designing}.
+
+\para{Prompt format sensitivity.} Our results may depend on the exact prompt wording. We use a single format per task and do not test robustness to paraphrasing.
+
+\para{Class imbalance.} Interval membership has 27.1\% positive labels, and narrow-width conditions have as few as 1\% positive labels. We address this with shuffled-label controls but do not balance sampling or report metrics like AUROC that are less sensitive to class proportions.
+
+\para{Single token position.} We extract activations only at the last token position. Information may flow through other token positions, particularly the positions corresponding to the numerical operands. Extending our analysis to all token positions would provide a more complete picture.

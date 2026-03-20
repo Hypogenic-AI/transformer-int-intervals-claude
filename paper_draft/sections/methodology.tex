@@ -1,0 +1,50 @@
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{Model and Infrastructure}
+
+We use \gptsmall (124M parameters, 12 transformer layers, 768-dimensional residual stream) as our target model. We chose GPT-2 Small because (1) its greater-than circuit has been fully mapped~\citep{hanna2023how}, (2) its number representations are well-characterized~\citep{levy2024language}, and (3) it is small enough for efficient activation extraction and patching. We use TransformerLens~\citep{elhage2021mathematical} for model hooking and activation extraction.
+
+\subsection{Tasks and Datasets}
+\label{sec:datasets}
+
+We construct four synthetic datasets with deterministic seeds for reproducibility. All prompts are formatted as natural language questions with consistent structure.
+
+\para{Number comparison.} 800 examples of the form ``Is $A$ greater than $B$? Answer Yes or No,'' where $A, B \in [0, 99]$ are sampled uniformly. Labels are balanced (51.4\% positive).
+
+\para{Interval membership.} 800 examples of the form ``Is $X$ in the interval $[A, B]$? Answer Yes or No,'' where $X, A, B \in [0, 100]$. Labels are naturally imbalanced (27.1\% positive) due to uniform sampling of all three values.
+
+\para{Ring counting.} 800 examples of the form ``What letter is $N$ after [start] in the alphabet (wrapping around)? The answer is,'' where $N$ is sampled uniformly. This task requires modular arithmetic: computing $(\text{start} + N) \mod 26$. Of the 800 examples, 52.8\% require wrapping past Z.
+
+\para{Interval by width.} 1{,}000 examples of interval membership stratified by interval width $w \in \{2, 5, 10, 20, 50\}$ (200 per width), enabling analysis of how interval size affects internal representation quality.
+
+\subsection{Hidden State Extraction}
+
+For each example, we tokenize the prompt using the GPT-2 tokenizer with a BOS token prepended, pass it through the model, and extract the residual stream activation at the \emph{last token position} (where the model makes its next-token prediction) at all 13 residual stream positions: the embedding layer (layer~0) plus all 12 post-transformer-block layers. Each activation is a 768-dimensional vector. We process examples in batches of 64.
+
+\subsection{Linear Probing}
+\label{sec:probing}
+
+We train linear probes to decode task-relevant information from hidden states at each layer, following the standard approach of \citet{alain2017understanding}.
+
+\para{Classification probes.} For binary tasks (comparison, interval membership), we train logistic regression classifiers (L-BFGS solver, $C = 1.0$, max 500 iterations) on residual stream activations to predict task labels. For ring counting, we train 26-class logistic regression to predict the answer letter. All probes are evaluated using 3-fold cross-validation.
+
+\para{Regression probes.} We train Ridge regression probes ($\alpha = 1.0$) to decode continuous numerical values from hidden states: the value of $X$ in interval prompts and the offset $N$ in ring counting prompts. We report $R^2$ scores under 3-fold cross-validation.
+
+\para{Shuffled-label control.} To control for probe memorization~\citep{hewitt2019designing}, we train identical probes on randomly shuffled labels at each layer. This establishes a baseline for how much accuracy is achievable from the activation geometry alone, independent of task-relevant structure.
+
+\subsection{Activation Patching}
+\label{sec:patching}
+
+To identify which layers causally contribute to the model's output, we perform activation patching~\citep{elhage2021mathematical}. For each task, we select 80 pairs of examples with opposite labels (one positive, one negative). For each pair and each layer $\ell$, we:
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item Run the model on the \emph{target} example (negative label) and record the logit difference $\Delta_{\text{orig}} = \text{logit}(\text{Yes}) - \text{logit}(\text{No})$.
+    \item Run the model on the \emph{source} example (positive label) and cache the residual stream at layer $\ell$.
+    \item Re-run the target example, but replace its residual stream at layer $\ell$ with the cached source activation.
+    \item Record the new logit difference $\Delta_{\text{patched}}$.
+\end{enumerate}
+The \emph{patching effect} at layer $\ell$ is the mean of $\Delta_{\text{patched}} - \Delta_{\text{orig}}$ across all 80 pairs. A large positive effect indicates that layer $\ell$ carries information that shifts the model's prediction toward the source label.
+
+\subsection{Evaluation Metrics}
+
+We report four metrics: (1) \textbf{behavioral accuracy}---the fraction of examples where the model's top next-token prediction matches the correct answer; (2) \textbf{probe accuracy}---3-fold cross-validated classification accuracy of linear probes; (3) \textbf{probe $R^2$}---3-fold cross-validated coefficient of determination for regression probes; and (4) \textbf{patching effect}---mean logit difference shift when the residual stream is patched from source to target.

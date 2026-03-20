@@ -1,0 +1,13 @@
+PDF: papers/quirke2024_addition_subtraction_transformers.pdf
+Total pages: 22
+Pages per chunk: 3
+
+Chunks:
+  quirke2024_addition_subtraction_transformers_chunk_001.pdf: pages 1-3
+  quirke2024_addition_subtraction_transformers_chunk_002.pdf: pages 4-6
+  quirke2024_addition_subtraction_transformers_chunk_003.pdf: pages 7-9
+  quirke2024_addition_subtraction_transformers_chunk_004.pdf: pages 10-12
+  quirke2024_addition_subtraction_transformers_chunk_005.pdf: pages 13-15
+  quirke2024_addition_subtraction_transformers_chunk_006.pdf: pages 16-18
+  quirke2024_addition_subtraction_transformers_chunk_007.pdf: pages 19-21
+  quirke2024_addition_subtraction_transformers_chunk_008.pdf: page 22
